@@ -1,0 +1,152 @@
+print('*'*110)
+print(f"|{'~~~KEIF GEN ZEE~~~':^108}|")
+print('*'*110)
+print('jl. Jend. Soedirman ')
+print('JAMBI')
+print('Telp : +62***********')
+print('  ')
+print('PAKET HEMAT')
+print('-'*11)
+print('HEMAT ABIEZ  : Nasi Biasa, Tahu, Tempe, Es Teh + Telur Dadar/Mata Sapi/Saos Padang   | Rp 15,000')
+print('HEMAT ABIZ   : Nasi Uduk, Tahu, Tempe, Es Teh + Telur Dadar/Mata Sapi/Saos Padang    | Rp 18,000')
+print('HEMAT BANGET : Nasi Goreng, Tahu, Tempe, Es Teh + Telur Dadar/Mata Sapi/Saos Padang  | Rp 15,000')
+print(' ')
+print('PAKET PREMIUM')
+print('-'*13)
+print('PREMIUM 1 : Nasi Biasa, Tahu, Tempe, Es + Ayam Geprek/Kremes/Goreng      |Rp 23,000')
+print('PREMIUM 2 : Nasi Uduk, Tahu, Tempe, Es Teh + Ayam Geprek/Kremes/Goreng   |Rp 25,000')
+print('PREMIUM 3 : Nasi Uduk, Tahu, Tempe, Es Teh + Ayam Geprek/Kremes/Goreng   |Rp 32,000')
+print('PREMIUM 4 : Nasi Uduk, Tahu, Tempe, Es Teh + Udang Tepung/Saos Padang    |Rp 30,000')
+print(' ')
+antrian =input('No Antrian : ')
+nama_kasir = input('Kasir :')
+metode_bayar = input('Pembayaran (Cash/Debit/Qris) : ')
+input(' ')
+nama =input(f"{'Nama Pemesan ':<19}:")
+telp =input(f"{'No Telp ':<19}:")
+alamat =input(f"{'Alamat Pengiriman ':<19}:")
+date =input(f"{'Tanggal ':<19}:")
+paket =input(f"{'Nama Paket ':<19}:")
+if paket == 'HEMAT ABIEZ' :
+        detail = input(f"{'Menu Paket ':<19}:")
+        jp = int(input(f"{'Jumlah Paket ':<19}:"))
+        harga = 15.000
+        harga_j = harga * jp 
+        harga_p = harga_j * 0.1
+        harga_t = harga_j + harga_p
+        if harga_j < 150.000 : 
+                harga_k = 25.000
+                harga_b = harga_t + harga_k
+                print(f'Harga Total        : {harga_b:.3f} ')
+        else : 
+                print(f'Harga Total        : {harga_t:.3f} \nBEBAS BIAYA PENGIRIMAN NICH :p')
+elif paket == 'HEMAT ABIZ' :
+        detail = input(f"{'Menu Paket ':<19}:")
+        jp = int(input(f"{'Jumlah Paket ':<19}:"))
+        harga = 18.000
+        harga_j = harga * jp
+        harga_p = harga_j * 0.1
+        harga_t = harga_j + harga_p
+        if harga_j < 150.000 : 
+                harga_k = 25.000
+                harga_b = harga_t + harga_k
+                print(f'Harga Total        : {harga_b:.3f} ')
+        else : 
+                print(f'Harga Total        : {harga_t:.3f} \nBEBAS BIAYA PENGIRIMAN NICH :p')
+elif paket == 'HEMAT BANGET' :
+        detail = input(f"{'Menu Paket ':<19}:")
+        jp = int(input(f"{'Jumlah Paket ':<19}:"))
+        harga = 15.000
+        harga_j = harga * jp
+        harga_p = harga_j * 0.1
+        harga_t = harga_j + harga_p
+        if harga_j < 150.000 : 
+                harga_k = 25.000
+                harga_b = harga_t + harga_k
+                print(f'Harga Total        : {harga_b:.3f} ')
+        else : 
+                print(f'Harga Total        : {harga_t:.3f} \nBEBAS BIAYA PENGIRIMAN NICH :p')
+elif paket == 'PREMIUM 1' :
+        detail = input(f"{'Menu Paket ':<19}:")
+        jp = int(input(f"{'Jumlah Paket ':<19}:"))
+        harga = 23.000
+        harga_j = harga * jp
+        harga_p = harga_j * 0.1
+        harga_t = harga_j + harga_p
+        if harga_j < 150.000 : 
+                harga_k = 25.000
+                harga_b = harga_t + harga_k
+                print(f'Harga Total        : {harga_b:.3f} ')
+        else : 
+                print(f'Harga Total        : {harga_t:.3f} \nBEBAS BIAYA PENGIRIMAN NICH :p')
+elif paket == 'PREMIUM 2'  :
+        detail = input(f"{'Menu Paket ':<19}:")
+        jp = int(input(f"{'Jumlah Paket  ':<19}:"))
+        harga = 25.000
+        harga_j = harga * jp
+        harga_p = harga_j * 0.1
+        harga_t = harga_j + harga_p
+        print('')
+        if harga_j < 150.000 : 
+                harga_k = 25.000
+                harga_b = harga_t + harga_k
+                print(f'Harga Total        : {harga_b:.3f} ')
+        else : 
+                print(f'Harga Total        : {harga_t:.3f} \nBEBAS BIAYA PENGIRIMAN NICH :p')
+elif paket == 'PREMIUM 3'  :
+        detail = input(f"{'Menu Paket ':<19}:")
+        jp = int(input(f"{'Jumlah Paket ':<19}:"))
+        harga = 32.000
+        harga_j = harga * jp
+        harga_p = harga_j * 0.1
+        harga_t = harga_j + harga_p
+        if harga_j < 150.000 : 
+                harga_k = 25.000
+                harga_b = harga_t + harga_k
+                print(f'Harga Total        : {harga_b:.3f} ')
+        else : 
+                print(f'Harga Total        : {harga_t:.3f} \nBEBAS BIAYA PENGIRIMAN NICH :p')
+elif paket == ('PREMIUM 4') : 
+        detail = input(f"{'Menu Paket ':<19}:")
+        jp = int(input(f"{'Jumlah Paket ':<19}:"))
+        harga = 30.000
+        harga_j = harga * jp
+        harga_p = harga_j * 0.1
+        harga_t = harga_j + harga_p
+        if harga_j < 150.000 : 
+                harga_k = 25.000
+                harga_b = harga_t + harga_k
+                print(f'Harga Total        : {harga_b:.3f} ')
+        else : 
+                print(f'Harga Total        : {harga_t:.3f} \nBEBAS BIAYA PENGIRIMAN NICH: :p')
+else :
+     print('KALO NGGA ADA, BELI TEMPAT LAIN SONO-!!')
+print('='*70)
+print(f"|{'STRUK PEMESANAN KEIF GEN ZEE':^68}|")
+print(f"|{date:^68}|")
+print('='*70)
+print(f"| {'Nama':<18}:{nama:<48}|")
+print(f"| {'No telp':<18}:{telp:<48}|")
+print(f"| {'Alamat':<18}:{alamat:<48}|")
+print(f"| {'Detail Pemesanan':<18}:{paket:<48}|")
+print(f"| {'Note':<18}:{detail:<48}|")
+print('-'*70)
+print(f"| {'Jumlah':<18}:{jp:<48}|")
+print(f"| {'Total Harga':<18}:{harga_j:.3f}                                         |")
+print(f"| {'Pajak (10%)':<18}:{harga_p:.3f}                                          |")
+print('-'*70)
+if harga_j < 150.000 :
+        print(f"{'Biaya Pengiriman    '}:{harga_k:.3f}")
+else :
+        print('Biaya Pengiriman    :BEBAS BIAYA PENGIRIMAN')
+if harga_j < 150.000 : 
+                print(f'Harga Total        : {harga_b:.3f} ')
+else : 
+                print(f'Harga Total        : {harga_t:.3f} \nBEBAS BIAYA PENGIRIMAN NICH: :p')
+print(' ')
+print(f"{'KAMSIAAA YOROBUNN':^68}")
+print(' ')
+print('='*110)
+print(f"|{'YOWW THANK YOU':^108}|")
+print(f"|{'SELAMAT MAKAN TUAN DAN NONA':^108}|")
+print('='*110)
