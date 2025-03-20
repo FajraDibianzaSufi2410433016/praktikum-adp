@@ -1,0 +1,12 @@
+lambda_t = float(input('nilai lambda = '))
+e = 2.71828
+M = int(input('nilai M = '))
+a = 1/e ** lambda_t
+b = 1
+for n in range (0,M+1) :
+    if n > 0 : 
+        b *= n
+        c = lambda_t**n
+        d = a*c
+        f = d/b
+        print(f"P(N(t) = {n}) = {f}")
