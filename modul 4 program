@@ -1,0 +1,64 @@
+kursi = {}
+no_kursi = 1
+for i in range(1, 19):
+    for j in range(1, 6): 
+        kursi[(i, j)] = no_kursi
+        print(f'|{no_kursi:>3}|', end=" ")
+        no_kursi += 1
+    print('')
+print('\nHarga Tiket')
+print(f'{"VVIP":<8} = Rp.550.000')
+print(f'{"VIP":<8} = Rp.450.000')
+print(f'{"Reguler":<8} = Rp.370.000')
+print(f'{"Ekonomi":<8} = Rp.300.000')
+p = int(input('Jumlah tiket yang ingin dipesan: '))
+vvip = vip = reguler = ekonomi = 0
+kursi_terisi = [False] * 91
+for u in range(1, p + 1):
+    print(f'Tiket ke-{u}')
+    r = input('Nama pemesan: ')  
+    while True:  
+        s = int(input('Nomor kursi: '))
+        if 1 <= s <= 90 and not kursi_terisi[s]: 
+            kursi_terisi[s] = True  
+            break
+        else:
+            print("Kursi sudah dipesan atau tidak tersedia! Pilih kursi lain.")
+    t = input('Password: ')
+    if 1 <= s <= 10:
+        tiket = 'VVIP'
+        h = 550000
+        vvip += 1
+    elif 11 <= s <= 25:
+        tiket = 'VIP'
+        h = 450000
+        vip += 1
+    elif 26 <= s <= 75:
+        tiket = 'Reguler'
+        h = 370000
+        reguler += 1
+    elif 76 <= s <= 90:
+        tiket = 'Ekonomi'
+        h = 300000
+        ekonomi += 1
+    print('-' * 30)
+    print(f"|{'=== STRUK PEMESANAN TIKET ===':^30}|")
+    print('Nama pemesan  :', r)
+    print('Nomor kursi   :', s)
+    print(f'Kategori Tiket: {tiket}')
+    print(f'Harga Tiket   : Rp{h:,}')
+    print('Password      :', t)
+    print('-' * 30)
+print('\nSisa Kursi per Kategori:')
+print('VVIP    :', 10 - vvip)
+print('VIP     :', 15 - vip)
+print('Reguler :', 50 - reguler)
+print('Ekonomi :', 15 - ekonomi) 
+print('\nLayout Kursi Sisa:')
+for k in range(1, 91):
+    if kursi_terisi[k]:  
+        print(f'| X |', end=" ")
+    else:
+        print(f'|{k:3}|', end=" ")
+    if k % 5 == 0: 
+        print()
