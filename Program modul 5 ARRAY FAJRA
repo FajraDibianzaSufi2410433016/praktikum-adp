@@ -1,0 +1,47 @@
+mahasiswa = []
+while True:
+    print("\nMenu Utama")
+    print("********")
+    print("1. Tambah Data")
+    print("2. Hapus Data")
+    print("3. Tampilkan Data")
+    print("4. Keluar")
+    pilihan = input("Pilih menu: ")
+
+    if pilihan == "1":
+        print("Tambah Data Mahasiswa")
+        print("---------------------")
+        nomor_mahasiswa = input("Nomor Mahasiswa: ")
+        nama = input("Nama Mahasiswa: ")
+        nilai = float(input("Nilai Mahasiswa: "))
+        mahasiswa.append({"nomor": nomor_mahasiswa, "nama": nama, "nilai": nilai})
+        print("Yes, Data berhasil ditambahkan!")
+    
+    elif pilihan == "2":
+        print("Hapus Data Mahasiswa")
+        print("-------------------")
+        nomor_mahasiswa = input("Nomor Mahasiswa yang ingin dihapus: ")
+        for data in mahasiswa:
+            if data["nomor"] == nomor_mahasiswa:
+                mahasiswa.remove(data)
+                print("Oke, Data berhasil dihapus!")
+                break
+        else:
+            print("Maaf, Data tidak ditemukan!")
+
+    elif pilihan == "3":
+        print("Data Mahasiswa")
+        print("-------------")
+        for i in range(len(mahasiswa)):
+            for j in range(len(mahasiswa) - 1):
+                if mahasiswa[j]["nilai"] < mahasiswa[j + 1]["nilai"]:
+                    mahasiswa[j], mahasiswa[j + 1] = mahasiswa[j + 1], mahasiswa[j]
+        for data in mahasiswa:
+            print(f"Nomor: {data['nomor']}, Nama: {data['nama']}, Nilai: {data['nilai']}")
+
+    elif pilihan == "4":
+        print("Terima kasih!")
+        break
+
+    else:
+        print("Pilihan tidak valid-!! Silahkan Pilih Menu Kembali")
