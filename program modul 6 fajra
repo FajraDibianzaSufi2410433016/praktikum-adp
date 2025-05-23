@@ -1,0 +1,95 @@
+print("=== PROGRAM MENGHITUNG JARAK ANTAR TITIK ===")
+n = 0
+while n < 2:
+    jumlah = input("Masukkan jumlah titik (minimal 2): ")
+    i = 0
+    angka = 0
+    if jumlah != "":
+        semua_angka = 1
+        while i < len(jumlah):
+            if jumlah[i] < '0' or jumlah[i] > '9':
+                semua_angka = 0
+            i = i + 1
+        if semua_angka == 1:
+            angka = int(jumlah)
+            if angka >= 2:
+                n = angka
+            else:
+                print("Jumlah harus minimal 2.")
+        else:
+            print("Input harus angka bulat.")
+    else:
+        print("Input tidak boleh kosong.")
+titik = []
+i = 0
+while i < n:
+    print("\nTitik ke-" + str(i+1))
+    
+    x = ""
+    while x == "":
+        x_input = input("  Masukkan nilai x: ")
+        if x_input != "":
+            j = 0
+            if x_input[0] == "-":
+                j = 1
+            titik_valid = 0
+            salah = 0
+            while j < len(x_input):
+                if x_input[j] == ".":
+                    titik_valid = titik_valid + 1
+                elif x_input[j] < "0" or x_input[j] > "9":
+                    salah = 1
+                j = j + 1
+            if titik_valid <= 1 and salah == 0:
+                x = float(x_input)
+            else:
+                print("  Input x tidak valid.")
+        else:
+            print("  Input x tidak boleh kosong.")
+
+    y = ""
+    while y == "":
+        y_input = input("  Masukkan nilai y: ")
+        if y_input != "":
+            j = 0
+            if y_input[0] == "-":
+                j = 1
+            titik_valid = 0
+            salah = 0
+            while j < len(y_input):
+                if y_input[j] == ".":
+                    titik_valid = titik_valid + 1
+                elif y_input[j] < "0" or y_input[j] > "9":
+                    salah = 1
+                j = j + 1
+            if titik_valid <= 1 and salah == 0:
+                y = float(y_input)
+            else:
+                print("  Input y tidak valid.")
+        else:
+            print("  Input y tidak boleh kosong.")
+
+    titik.append([x, y])
+    i = i + 1
+print("\n=== DAFTAR TITIK ===")
+i = 0
+while i < len(titik):
+    print("Titik", i+1, ":", titik[i])
+    i = i + 1
+print("\n=== JARAK ANTAR TITIK ===")
+i = 0
+while i < len(titik):
+    j = i + 1
+    while j < len(titik):
+        x1 = titik[i][0]
+        y1 = titik[i][1]
+        x2 = titik[j][0]
+        y2 = titik[j][1]
+        dx = x2 - x1
+        dy = y2 - y1
+        jarak = (dx * dx + dy * dy) ** 0.5
+        print("Jarak Titik", i+1, "ke Titik", j+1, "=", jarak)
+        j = j + 1
+    i = i + 1
+
+print("\n=== SELESAI ===")
