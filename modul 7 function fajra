@@ -1,0 +1,70 @@
+def input_data():
+    data = []
+    jumlah_pratikan = int(input("Masukkan jumlah pratikan: "))
+    for i in range(jumlah_pratikan):
+        nama = input(f"Masukkan nama pratikan {i+1}: ")
+        nim = input(f"Masukkan NIM pratikan {i+1}: ")
+        pretest = float(input(f"Masukkan nilai pretest pratikan {i+1}: "))
+        postest = float(input(f"Masukkan nilai postest pratikan {i+1}: "))
+        tugas = float(input(f"Masukkan nilai tugas pratikan {i+1}: "))
+        bonus = float(input(f"Masukkan nilai bonus pratikan {i+1}: "))
+        data.append([nama, nim, pretest, postest, tugas, bonus])
+        print()
+    return data
+data = []
+def hitung_rata_nilai(data):
+    total_pretest = 0
+    total_postest = 0
+    total_tugas = 0
+    for i in data:
+        total_pretest += i[2]
+        total_postest += i[3]
+        total_tugas += i[4]
+    rata_pretest = total_pretest / len(data)
+    rata_postest = total_postest / len(data)
+    rata_tugas = total_tugas / len(data)
+    return rata_pretest, rata_postest, rata_tugas
+
+def hitung_nilai_akhir(data):
+    for i in data:
+        nilai_akhir = (0.25 * i[2]) + (0.25 * i[3]) + (0.5 * i[4]) + i[5]
+        i.append(nilai_akhir)
+    return data
+
+def hitung_rata_nilai_akhir(data):
+    total_nilai_akhir = 0
+    for i in data:
+        total_nilai_akhir += i[6]
+    return total_nilai_akhir / len(data)
+
+def urutkan_pratikan(data):
+    for i in range(len(data)):
+        for j in range(i + 1, len(data)):
+            if data[i][6] < data[j][6]:
+                data[i], data[j] = data[j], data[i]
+    peringkat = 1
+    for i in data:
+        i.append(peringkat)
+        peringkat += 1
+    return data
+
+
+def tampilkan_hasil(data):
+    rata_pretest, rata_postest, rata_tugas = hitung_rata_nilai(data)
+    rata_nilai_akhir = hitung_rata_nilai_akhir(data)
+    print("===============================================")
+    print("Rata-rata nilai pretest: {:.2f}".format(rata_pretest))
+    print("Rata-rata nilai postest: {:.2f}".format(rata_postest))
+    print("Rata-rata nilai tugas: {:.2f}".format(rata_tugas))
+    print("Rata-rata nilai akhir: {:.2f}".format(rata_nilai_akhir))
+    print("==============================================================")
+    print("| {:^20} | {:^10} | {:^10} | {:^9} |".format("Nama", "NIM", "Nilai Akhir", "Peringkat"))
+    print("--------------------------------------------------------------")
+    for i in data:
+        print("| {:<20} | {:^10} | {:^10.2f} | {:^10} |".format(i[0], i[1], i[6], i[7]))
+    print("==============================================================")
+
+data = input_data()
+data = hitung_nilai_akhir(data)
+data = urutkan_pratikan(data)
+tampilkan_hasil(data)
