@@ -1,25 +1,25 @@
-import json
-
-
+import os
+os.system('cls')
 FILE_DATA = "data_keuangan.txt"
-
 def load_data():
-    with open(FILE_DATA, "a+") as file:
-        file.seek(0)
-        data = file.read()
-        if data:
-            return json.loads(data)
-        else:
-            return []
+    data = []
+    with open(FILE_DATA, "r") as file:
+        for line in file:
+            tanggal, keterangan, jumlah, tipe = line.strip().split(",")
+            data.append({
+                "tanggal": tanggal,
+                "keterangan": keterangan,
+                "jumlah": float(jumlah),
+                "tipe": tipe
+            })
+    return data
 
 def save_data(data):
     with open(FILE_DATA, "w") as file:
-        json.dump(data, file, indent=4)
+        for item in data:
+            file.write(f"{item['tanggal']},{item['keterangan']},{item['jumlah']},{item['tipe']}\n")
 
 def tambah_data():
-    print("\n======================================")
-    print(" Tambah Data Keuangan ")
-    print("======================================")
     tanggal = input("Masukkan tanggal (YYYY-MM-DD): ")
     keterangan = input("Masukkan keterangan: ")
     jumlah = float(input("Masukkan jumlah uang: "))
@@ -35,65 +35,47 @@ def tambah_data():
     keuangan = load_data()
     keuangan.append(data)
     save_data(keuangan)
-    print("\nData keuangan berhasil ditambahkan!")
-    print("======================================")
+    print("Data keuangan berhasil ditambahkan!")
 
 def hapus_data():
     keuangan = load_data()
     if not keuangan:
-        print("\n======================================")
-        print(" Tidak ada data keuangan ")
-        print("======================================")
+        print("Tidak ada data keuangan yang dapat dihapus.")
         return
     
-    print("\n======================================")
-    print(" Hapus Data Keuangan ")
-    print("======================================")
-    i = 1
-    for data in keuangan:
-        print(f"{i}. Tanggal: {data['tanggal']}, Keterangan: {data['keterangan']}, Jumlah: {data['jumlah']}, Tipe: {data['tipe']}")
-        i += 1
+    print("Data Keuangan:")
+    for i in range(len(keuangan)):
+        print(f"{i+1}. Tanggal: {keuangan[i]['tanggal']}, Keterangan: {keuangan[i]['keterangan']}, Jumlah: {keuangan[i]['jumlah']}, Tipe: {keuangan[i]['tipe']}")
     
     indeks = int(input("Masukkan nomor data yang ingin dihapus: ")) - 1
     if indeks < 0 or indeks >= len(keuangan):
-        print("\nNomor data tidak valid.")
+        print("Nomor data tidak valid.")
         return
     
     del keuangan[indeks]
     save_data(keuangan)
-    print("\nData keuangan berhasil dihapus!")
-    print("======================================")
+    print("Data keuangan berhasil dihapus!")
 
 def tampilkan_data():
     keuangan = load_data()
     if not keuangan:
-        print("\n======================================")
-        print(" Tidak ada data keuangan ")
-        print("======================================")
+        print("Tidak ada data keuangan.")
         return
     
-    print("\n======================================")
-    print(" Data Keuangan ")
-    print("======================================")
-    i = 1
-    for data in keuangan:
-        print(f"{i}. Tanggal: {data['tanggal']}, Keterangan: {data['keterangan']}, Jumlah: {data['jumlah']}, Tipe: {data['tipe']}")
-        i += 1
-    print("======================================")
+    print("Data Keuangan:")
+    for i in range(len(keuangan)):
+        print(f"{i+1}. Tanggal: {keuangan[i]['tanggal']}, Keterangan: {keuangan[i]['keterangan']}, Jumlah: {keuangan[i]['jumlah']}, Tipe: {keuangan[i]['tipe']}")
 
 def main():
     with open(FILE_DATA, "a+"):
-        pass
-    
+        None
     while True:
-        print("\n======================================")
-        print(" Keuangan Pribadi ")
-        print("======================================")
+        print("\nMenu Keuangan Pribadi")
+        print("------------------------")
         print("1. Tambah Data Keuangan")
         print("2. Hapus Data Keuangan")
         print("3. Tampilkan Semua Data")
         print("4. Keluar")
-        print("======================================")
         pilihan = input("Masukkan pilihan: ")
         
         if pilihan == "1":
@@ -103,11 +85,9 @@ def main():
         elif pilihan == "3":
             tampilkan_data()
         elif pilihan == "4":
-            print("\nTerima kasih!")
-            print("======================================")
+            print("Terima kasih!")
             break
         else:
-            print("\nPilihan tidak valid.")
-            print("======================================")
+            print("Pilihan tidak valid.")
 
 main()
