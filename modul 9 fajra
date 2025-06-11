@@ -1,0 +1,22 @@
+import os
+import time
+from termcolor import cprint
+
+pola_gelombang = [0,1,2,1,0]
+geser = 0
+
+while True:
+    os.system('cls')
+    for i in range(4):
+        spasi = pola_gelombang[(i + geser) % len(pola_gelombang)]
+        cprint(' ' * spasi + ' ' * 25, 'white', 'on_red')
+
+    for j in range(4):
+        spasi = pola_gelombang[(j + geser) % len(pola_gelombang)]
+        cprint(' ' * spasi + ' ' * 25, 'white', 'on_white')
+
+    for tiang in range(20):
+        cprint('  ', 'white', 'on_green')
+
+    geser = (geser + 1) % len(pola_gelombang)
+    time.sleep(0.3)
